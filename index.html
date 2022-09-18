@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&display=swap" rel="stylesheet">
+    <!-- titile -->
     <title>Digital Clock</title>
 </head>
+
 <body>
-    <h1>Digital Clock</h1>
+    <header>
+        <section class="mt-5">
+            <div class="main_container  container">
+                <div class="row align-items-center">
+                    <div class=" pt-lg-5 pb-lg-5 col-12 text-center text-white">
+                        <h1>Digital Clock</h1>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4 clock_block">
+                            <h1><span id="hours">14</span>:<span id="mins">24</span>:<span id="seconds">33</span><span id="timeFormat">PM</span></h1>
+                            <p id="dayDate">New Date</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+    <script>
+        setInterval(() => {
+            const date = new Date();
+            const hours = date.getHours();
+            const mins = date.getMinutes();
+            const secs = date.getSeconds();
+            // month format
+            const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            let month = months[date.getMonth()];
+
+            // day format
+            const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            let day = days[date.getDay()];
+
+            // 12 hour format
+            const hours12 = hours > 12 ? hours - 12 : hours;
+            const formatHours = hours12 < 10 ? '0' + hours12 : hours12;
+            const formatMinutes = mins < 10 ? '0' + mins : mins;
+            const formatSeconds = secs < 10 ? '0' + secs : secs;
+
+            document.getElementById("hours").innerText = formatHours;
+            document.getElementById("mins").innerText = formatMinutes;
+            document.getElementById("seconds").innerText = formatSeconds;
+            document.getElementById("timeFormat").innerText = hours > 12 ? 'PM' : 'AM';
+            document.getElementById("dayDate").innerText =day +","+" "+ date.getDate()+ " - " + month + " - " + date.getFullYear(); 
+        }, 1000)
+
+    </script>
 </body>
+
 </html>
