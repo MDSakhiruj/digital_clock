@@ -47,6 +47,7 @@
         crossorigin="anonymous"></script>
     <script>
         setInterval(() => {
+            // Current Date
             const date = new Date();
             const hours = date.getHours();
             const mins = date.getMinutes();
@@ -69,7 +70,7 @@
             document.getElementById("mins").innerText = formatMinutes;
             document.getElementById("seconds").innerText = formatSeconds;
             document.getElementById("timeFormat").innerText = hours > 12 ? 'PM' : 'AM';
-            document.getElementById("dayDate").innerText =day +","+" "+ date.getDate()+ " - " + month + " - " + date.getFullYear(); 
+            document.getElementById("dayDate").innerText = day +","+" "+ date.getDate()+ " - " + month + " - " + date.getFullYear(); 
         }, 1000)
 
     </script>
